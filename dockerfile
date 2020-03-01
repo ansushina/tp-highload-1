@@ -5,4 +5,4 @@ RUN apt-get update -y && apt-get install -y python3
 COPY . /server
 EXPOSE 80
 WORKDIR /server 
-CMD python3 ./main.py
+CMD python3 ./src/main.py
