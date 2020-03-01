@@ -8,8 +8,10 @@ class Request:
     ok = False
     def __init__(self, req):
         self.req = req
+
+        self.__parse_req()
     
-    def parse_req(self):
+    def __parse_req(self):
         lines = self.req.split('\r\n')
         
         first = lines[0]
@@ -28,7 +30,7 @@ class Request:
             if len(chunks) != 2:
                 return
             self.__addHeader(chunks[0], chunks[1])
-        ok = True
+        self.ok = True
         print("done")
         
     def __addHeader(self, key, value):

@@ -43,8 +43,8 @@ class Response:
     contetnt_type = ''
     index = False
 
-    def __init__(self, buffer):
-        self.req = Request(buffer)
+    def __init__(self, request: Request):
+        self.req = request
 
     def __bad_req(self):
         st = codes[self.status]
@@ -61,8 +61,7 @@ class Response:
         return ('HTTP/1.1 %s\r\nConnection: %s\r\nDate: %s\r\nServer: %s\r\nContent-Type: %s\r\nContent-Length: %d\r\n\r\n' %
                 (st,  self.connection, self.date, self.server, self.content_type, self.content_length)).encode()
 
-    def create_res(self, root):
-        self.req.parse_req()
+    def create_res(self, root): 
         if not self.req.ok:
             print(self.req.ok)
             self.status = BAD_REQUEST
