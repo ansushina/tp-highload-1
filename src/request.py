@@ -12,7 +12,7 @@ class Request:
         self.__parse_req()
     
     def __parse_req(self):
-        lines = self.req.split('\r\n')[:-2]
+        lines = self.req.split('\r\n')
         first = lines[0]
         lines = lines[1:]
         chunks = first.split(' ')
