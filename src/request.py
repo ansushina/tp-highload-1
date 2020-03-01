@@ -36,12 +36,14 @@ class Request:
     def __addHeader(self, key, value):
         self.headers[key] = value
     
-    def parse_url(self, root): 
+    def parse_url(self, root):
+        print(root)
         newUrl = self.url
         sep = self.url.find('?') if self.url.find('?') != -1 else self.url.find('#')
         if sep != -1:
             newUrl = newUrl[:sep]
-        path = os.path.join(root, newUrl)
+        #path = os.path.join(root, newUrl)
+        path = root + newUrl
         return path
 
 

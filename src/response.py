@@ -62,7 +62,6 @@ class Response:
                 (st,  self.connection, self.date, self.server, self.content_type, self.content_length)).encode()
 
     def create_res(self, root):
-        print(root)
         if not self.req.ok:
             print(self.req.ok)
             self.status = BAD_REQUEST
