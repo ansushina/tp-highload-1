@@ -13,10 +13,11 @@ class Request:
     
     def __parse_req(self):
         lines = self.req.split('\r\n')
-        print(lines)
+        
         first = lines[0]
 		
         lines = lines[1:-2]
+        print(lines)
         chunks = first.split(' ')
         print(chunks)
         if len(chunks) != 3:

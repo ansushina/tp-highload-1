@@ -63,6 +63,7 @@ class Response:
 
     def create_res(self, root): 
         if not self.req.ok:
+            print(self.req.ok)
             self.status = BAD_REQUEST
             return self.__bad_req()
         if not self.req.Method in allowed_methods:
