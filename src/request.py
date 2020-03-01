@@ -1,4 +1,5 @@
 import os.path
+from urllib.parse import unquote
 
 class Request:
     method = ''
@@ -13,13 +14,9 @@ class Request:
     
     def __parse_req(self):
         lines = self.req.split('\r\n')
-        
         first = lines[0]
-		
         lines = lines[1:-2]
-        print(lines)
         chunks = first.split(' ')
-        print(chunks)
         if len(chunks) != 3:
             return
         self.method = chunks[0]
@@ -31,21 +28,17 @@ class Request:
                 return
             self.__addHeader(chunks[0], chunks[1])
         self.ok = True
-        print("done")
         
     def __addHeader(self, key, value):
         self.headers[key] = value
     
     def parse_url(self, root):
-        
         newUrl = self.url
         sep = self.url.find('?') if self.url.find('?') != -1 else self.url.find('#')
         if sep != -1:
             newUrl = newUrl[:sep]
-        #path = os.path.join(root, newUrl)
         path = root + newUrl
-        print(path)
-        print("1")
+        path = unquote(path, encoding='utf-8')
         return path
 
 

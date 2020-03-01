@@ -28,7 +28,7 @@ class Config:
             elif key == 'document_root':
                 self.document_root = value.rstrip()
             else:
-                setattr(self, key, value)
+                setattr(self, key, value.rstrip())
         f.close()
 
 

@@ -3,7 +3,8 @@ from threading import Thread
 from config import Config
 from response import Response
 from request import Request
-import logging
+
+maxRequestLen = 4096
 
 def handle(sock, root):
     while True:
@@ -21,8 +22,6 @@ def handle(sock, root):
                 buffer = ''
                 break
         if buffer:
-            logging.debug(buffer)
-            print(buffer)
             req = Request(buffer)
             res = Response(req)
             answer = res.create_res(root)
