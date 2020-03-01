@@ -16,7 +16,7 @@ class Request:
         print(lines)
         first = lines[0]
 		
-        lines = lines[1:]
+        lines = lines[1:-2]
         chunks = first.split(' ')
         print(chunks)
         if len(chunks) != 3:
@@ -30,7 +30,7 @@ class Request:
                 return
             self.__addHeader(chunks[0], chunks[1])
         ok = True
-        print(done)
+        print("done")
         
     def __addHeader(self, key, value):
         self.headers[key] = value
