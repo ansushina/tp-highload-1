@@ -18,8 +18,8 @@ class Request:
         chunks = first.split(' ')
         if len(chunks) != 3:
             return
-        self.method = chuncks[0]
-        self.url = chuncks[1]
+        self.method = chunks[0]
+        self.url = chunks[1]
         self.version = chunks[2]
         for line in lines: 
             chunks = line.split(':', 1)
