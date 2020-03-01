@@ -13,12 +13,12 @@ class Request:
     
     def __parse_req(self):
         lines = self.req.split('\r\n')
-		print(lines)
+        print(lines)
         first = lines[0]
 		
         lines = lines[1:]
         chunks = first.split(' ')
-		print(chunks)
+        print(chunks)
         if len(chunks) != 3:
             return
         self.method = chunks[0]
@@ -30,8 +30,8 @@ class Request:
                 return
             self.__addHeader(chunks[0], chunks[1])
         ok = True
-		print(done)
-
+        print(done)
+        
     def __addHeader(self, key, value):
         self.headers[key] = value
     
