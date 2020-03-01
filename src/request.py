@@ -8,10 +8,8 @@ class Request:
     ok = False
     def __init__(self, req):
         self.req = req
-
-        self.__parse_req()
     
-    def __parse_req(self):
+    def parse_req(self):
         lines = self.req.split('\r\n')
         
         first = lines[0]
