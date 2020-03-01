@@ -6,6 +6,7 @@ from request import Request
 import logging
 
 def handle(sock, root):
+    print(root)
     while True:
         conn, info = sock.accept()
         buffer = '' 
