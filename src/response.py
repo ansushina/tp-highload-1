@@ -74,7 +74,7 @@ class Response:
 
         if filepath.find('../') != -1:
             self.status = FORBIDDEN
-            return self.__bad_req
+            return self.__bad_req()
         
         isDir = False
         if os.path.isdir(filepath):
@@ -86,7 +86,7 @@ class Response:
                 self.status = FORBIDDEN
             else: 
                 self.status = NOT_FOUND
-            return self.__bad_req
+            return self.__bad_req()
 
 
         self.status = OK
