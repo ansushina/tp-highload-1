@@ -1,8 +1,8 @@
 
 DEFAULT_CPU_LIMIT = 4
 DEFAULT_HOST = '0.0.0.0'
-DEFAULT_PORT = 80
-DEFAULT_DOCUMENT_ROOT = '/var/www/html'
+DEFAULT_PORT = 81
+DEFAULT_DOCUMENT_ROOT = "/var/www/html"
 DEFAULT_THREAD_LIMIT = 64
 DEFAULT_FILE_NAME = '/etc/httpd.conf'
 
@@ -26,7 +26,7 @@ class Config:
             elif key == 'cpu_limit':
                 self.cpu_limit = int(value)
             elif key == 'document_root':
-                self.document_root = value
+                self.document_root = value.rstrip()
             else:
                 setattr(self, key, value)
         f.close()

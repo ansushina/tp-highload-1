@@ -80,7 +80,7 @@ class Response:
         print(filepath)
         if os.path.isdir(filepath):
             isDir = True
-            filepath = os.path.join(filepath, 'index.html')
+            filepath = filepath + 'index.html'
             print(filepath)
 
         if not os.path.exists(filepath):
@@ -92,14 +92,14 @@ class Response:
 
 
         self.status = OK
-        f = open(file, 'rb')
+        f = open(filepath, 'rb')
         data = f.read() 
         f.close()
         self.content_length = len(data)
 
-        file_type = str(file.split('.')[-1])
+        file_type = str(filepath.split('.')[-1])
         if file_type  in types.keys():
-            self.content_type = types[self.file_type]
+            self.content_type = types[file_type]
         else:
             self.content_type ='text/plain'
         

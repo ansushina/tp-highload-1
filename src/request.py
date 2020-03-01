@@ -37,8 +37,7 @@ class Request:
         self.headers[key] = value
     
     def parse_url(self, root):
-        print("parse url")
-        print(root)
+        
         newUrl = self.url
         sep = self.url.find('?') if self.url.find('?') != -1 else self.url.find('#')
         if sep != -1:
@@ -46,8 +45,7 @@ class Request:
         #path = os.path.join(root, newUrl)
         path = root + newUrl
         print(path)
-        print(root + newUrl)
-        print(os.path.join(root, newUrl))
+        print("1")
         return path
 
 
