@@ -66,7 +66,7 @@ class Response:
             print(self.req.ok)
             self.status = BAD_REQUEST
             return self.__bad_req()
-        if not self.req.Method in allowed_methods:
+        if not self.req.method in allowed_methods:
             self.status = NOT_ALLOWED
             return self.__bad_req()
 
