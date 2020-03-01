@@ -43,8 +43,8 @@ class Response:
     contetnt_type = ''
     index = False
 
-    def __init__(self, request: Request):
-        self.req = request
+    def __init__(self, buffer):
+        self.req = Request(buffer)
 
     def __bad_req(self):
         st = codes[self.status]

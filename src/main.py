@@ -23,8 +23,7 @@ def handle(sock, root):
         if buffer:
             logging.debug(buffer)
             print(buffer)
-            req = Request(buffer)
-            res = Response(req)
+            res = Response(buffer)
             answer = res.create_res(root)
             conn.send(answer)
         conn.close()
