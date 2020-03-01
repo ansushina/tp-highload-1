@@ -1,21 +1,13 @@
-
-DEFAULT_CPU_LIMIT = 4
-DEFAULT_HOST = '0.0.0.0'
-DEFAULT_PORT = 80
-DEFAULT_DOCUMENT_ROOT = "/var/www/html"
-DEFAULT_THREAD_LIMIT = 64
-DEFAULT_FILE_NAME = '/etc/httpd.conf'
-
 class Config: 
-    def __init__(self, filename = DEFAULT_FILE_NAME):
-        self.cpu_limit = DEFAULT_CPU_LIMIT
-        self.host = DEFAULT_HOST
-        self.port = DEFAULT_PORT
-        self.document_root = DEFAULT_DOCUMENT_ROOT
-        self.thread_limit = DEFAULT_THREAD_LIMIT
+    def __init__(self, filename = '/etc/httpd.conf'):
+        self.cpu_limit = 4
+        self.host = '0.0.0.0'
+        self.port = 81
+        self.document_root = "/var/www/html"
+        self.thread_limit = 64
 
         try:
-            f = open('/etc/httpd.conf', 'r')
+            f = open(filename, 'r')
         except FileNotFoundError:
             exit('conf is not found')
 
@@ -30,6 +22,3 @@ class Config:
             else:
                 setattr(self, key, value.rstrip())
         f.close()
-
-
-

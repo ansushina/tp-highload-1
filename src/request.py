@@ -1,6 +1,3 @@
-import os.path
-from urllib.parse import unquote
-
 class Request:
     method = ''
     url = ''
@@ -26,21 +23,6 @@ class Request:
             chunks = line.split(':', 1)
             if len(chunks) != 2:
                 return
-            self.__addHeader(chunks[0], chunks[1])
+            self.headers[chunks[0].rstrip()] = chunks[1].rstrip()
         self.ok = True
-        
-    def __addHeader(self, key, value):
-        self.headers[key] = value
-    
-    def parse_url(self, root):
-        newUrl = self.url
-        sep = self.url.find('?') if self.url.find('?') != -1 else self.url.find('#')
-        if sep != -1:
-            newUrl = newUrl[:sep]
-        path = root + newUrl
-        path = unquote(path, encoding='utf-8')
-        return path
-
-
-
-
+       

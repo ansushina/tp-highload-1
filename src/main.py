@@ -1,34 +1,7 @@
 import socket
 from threading import Thread
 from config import Config
-from response import Response
-from request import Request
-
-maxRequestLen = 4096
-
-def handle(sock, root):
-    while True:
-        conn, info = sock.accept()
-        buffer = '' 
-        while True:
-            data = conn.recv(1024)
-            if not data:
-                buffer = ''
-                break
-            buffer += data.decode("utf-8")
-            if buffer.find('\r\n\r\n'):
-                break
-            if len(buffer) >= maxRequestLen:
-                buffer = ''
-                break
-        if buffer:
-            req = Request(buffer)
-            res = Response(req)
-            answer = res.create_res(root)
-            conn.send(answer)
-        conn.close()
-
-
+from functions import handle
 
 if __name__ == '__main__':
     conf = Config()
