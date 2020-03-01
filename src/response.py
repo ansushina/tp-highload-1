@@ -64,16 +64,16 @@ class Response:
     def create_res(self, root): 
         if not self.req.ok:
             self.status = BAD_REQUEST
-            return __bad_req()
+            return self.__bad_req()
         if not self.req.Method in allowed_methods:
             self.status = NOT_ALLOWED
-            return __bad_req()
+            return self.__bad_req()
 
         filepath = self.req.parse_url(root)
 
         if filepath.find('../') != -1:
             self.status = FORBIDDEN
-            return __bad_req
+            return self.__bad_req
         
         isDir = False
         if os.path.isdir(filepath):
@@ -85,7 +85,7 @@ class Response:
                 self.status = FORBIDDEN
             else: 
                 self.status = NOT_FOUND
-            return __bad_req
+            return self.__bad_req
 
 
         self.status = OK
@@ -101,9 +101,9 @@ class Response:
             self.content_type ='text/plain'
         
         if self.req.method == 'HEAD':
-            return __ok_req_head()
+            return self.__ok_req_head()
 
-        return __ok_req(data)
+        return self.__ok_req(data)
 
          
     
