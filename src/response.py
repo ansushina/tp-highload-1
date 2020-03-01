@@ -77,9 +77,11 @@ class Response:
             return self.__bad_req()
         
         isDir = False
+        print(filepath)
         if os.path.isdir(filepath):
             isDir = True
             filepath = os.path.join(filepath, 'index.html')
+            print(filepath)
 
         if not os.path.exists(filepath):
             if isDir:
