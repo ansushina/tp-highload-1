@@ -3,6 +3,7 @@ from threading import Thread
 from config import Config
 from response import Response
 from request import Request
+import logging
 
 def handle(sock, root):
     while True:
@@ -13,13 +14,15 @@ def handle(sock, root):
             if not data:
                 buffer = ''
                 break
-            buffer += data.decode('utf-8')
+            buffer += data.decode("utf-8")
             if buffer.find('\r\n\r\n'):
                 break
             if len(buffer) >= maxRequestLen:
                 buffer = ''
                 break
-        if buffer: 
+        if buffer:
+            logging.debug(buffer)
+            print(buffer)
             req = Request(buffer)
             res = Response(req)
             answer = res.create_res(root)
