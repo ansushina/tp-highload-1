@@ -2,7 +2,7 @@ class Config:
     def __init__(self, filename = '/etc/httpd.conf'):
         self.cpu_limit = 4
         self.host = '0.0.0.0'
-        self.port = 81
+        self.port = 80
         self.document_root = "/var/www/html"
         self.thread_limit = 64
 
